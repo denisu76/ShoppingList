@@ -17,7 +17,8 @@ class ShoppingListApplication {
             try {
                 System.out.println("1. Create product");
                 System.out.println("2. Find product by id");
-                System.out.println("3. Exit");
+                System.out.println("3. Delete product by id");
+                System.out.println("4. Exit");
                 Integer userInput = Integer.valueOf(scanner.nextLine());
                 switch (userInput) {
                     case 1:
@@ -55,6 +56,11 @@ class ShoppingListApplication {
                         System.out.println(findProductResult);
                         break;
                     case 3:
+                        System.out.println("Enter product id: ");
+                        long del_id = scanner.nextLong();
+                        productRepository.remove(del_id);
+                        break;
+                    case 4:
                         return;
                 }
             } catch (Exception e) {
