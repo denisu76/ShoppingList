@@ -59,7 +59,7 @@ class ShoppingListApplication {
                         System.out.println("Enter product id: ");
                         long del_id = scanner.nextLong();
                         productRepository.remove(del_id);
-                        break; 
+                        break;
                     case 4:
                         return;
                 }
