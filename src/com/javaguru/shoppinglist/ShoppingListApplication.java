@@ -57,8 +57,8 @@ class ShoppingListApplication {
                         break;
                     case 3:
                         System.out.println("Enter product id: ");
-                        long del_id = scanner.nextLong();
-                        productRepository.remove(del_id);
+                        long deleteId = scanner.nextLong();
+                        productRepository.remove(deleteId);
                         break;
                     case 4:
                         return;
