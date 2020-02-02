@@ -15,13 +15,13 @@ public class ProductValidationService {
         validationRules.add(new ProductDiscountValidationRule());
     }
 
-    public void validate (Product product) throws ProductValidationException, IllegalArgumentException{
+    public void validate (Product product) throws IllegalArgumentException{
 
-        for(ProductValidationRule productValidationRule : validationRules){
-            productValidationRule.validate(product);
-        }
+//        for(ProductValidationRule productValidationRule : validationRules){
+//            productValidationRule.validate(product);
+//        }
 
-        //validationRules.forEach(s -> s.validate(product));
-
+        validationRules.forEach(s -> s.validate(product));
     }
+
 }
