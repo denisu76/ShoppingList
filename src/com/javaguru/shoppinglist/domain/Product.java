@@ -1,4 +1,6 @@
-package com.javaguru.shoppinglist;
+package com.javaguru.shoppinglist.domain;
+
+import com.javaguru.shoppinglist.service.Category;
 
 import java.math.BigDecimal;
 import java.util.Objects;
