@@ -24,4 +24,11 @@ public class ProductInMemoryRepository {
         productRepository.remove(id);
     }
 
+    public boolean isUnique(Product product){
+        for(Product productInRepository : productRepository.values()){
+            if (productInRepository.getName().equals(product.getName())){return false;}
+        }
+        return true;
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,13 +16,13 @@ public class ProductValidationService {
         validationRules.add(new ProductDiscountValidationRule());
     }
 
-    public void validate (Product product) throws ProductValidationException, IllegalArgumentException{
+    public void validate (Product product, ProductInMemoryRepository repository){
 
-        for(ProductValidationRule productValidationRule : validationRules){
-            productValidationRule.validate(product);
+        validationRules.forEach(s -> s.validate(product));
+
+        if (!repository.isUnique(product)){
+            throw new IllegalArgumentException("Product name is not unique!");
         }
-
-        //validationRules.forEach(s -> s.validate(product));
-
     }
+
 }
