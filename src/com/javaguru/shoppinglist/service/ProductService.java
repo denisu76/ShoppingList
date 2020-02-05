@@ -9,12 +9,8 @@ public class ProductService {
     private ProductInMemoryRepository repository = new ProductInMemoryRepository();
     private ProductValidationService validationService = new ProductValidationService();
 
-    public Long createProduct(Product product) throws IllegalArgumentException{
-        validationService.validate(product);
-
-        if (!repository.isUnique(product)){
-            throw new IllegalArgumentException("Product name is not unique!");
-        }
+    public Long createProduct(Product product){
+        validationService.validate(product, repository);
 
         Product createdProduct = repository.insert(product);
         return createdProduct.getId();

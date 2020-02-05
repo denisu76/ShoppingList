@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public class ProductDiscountValidationRule implements ProductValidationRule {
 
     @Override
-    public void validate (Product product) throws IllegalArgumentException{
+    public void validate (Product product){
         checkNotNull(product);
         final BigDecimal maxValue = new BigDecimal("100");
         final BigDecimal minPriceValue = new BigDecimal("20");

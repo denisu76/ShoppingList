@@ -5,7 +5,7 @@ import com.javaguru.shoppinglist.domain.Product;
 public class ProductNameValidationRule implements ProductValidationRule{
 
     @Override
-    public void validate (Product product) throws IllegalArgumentException{
+    public void validate (Product product){
         checkNotNull(product);
         if (product.getName().length() < 3 || product.getName().length() > 32){
             throw new IllegalArgumentException("Name length is incorrect!");
