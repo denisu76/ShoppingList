@@ -26,7 +26,6 @@ public class ProductValidationServiceTest {
         victim.validate(product, repository);
     }
 
-
     private Product product(){
         Product product = new Product();
         product.setName("Test name");
