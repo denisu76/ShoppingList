@@ -18,10 +18,6 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProductIsUniqueValidationRuleTest {
-/*
-    @Rule
-    public final ExpectedException expectedException = ExpectedException.none();
-*/
     @Mock
     ProductInMemoryRepository repository;
 
@@ -33,11 +29,6 @@ public class ProductIsUniqueValidationRuleTest {
     @Test
     public void validate() {
         when(repository.isUnique(product)).thenReturn(false);
-        /*
-        expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("Product name is not unique!");
-        victim.validate(product());
-        */
 
         assertThatThrownBy(() -> victim.validate(product())).isInstanceOf(IllegalArgumentException.class).hasMessage("Product name is not unique!");
     }
