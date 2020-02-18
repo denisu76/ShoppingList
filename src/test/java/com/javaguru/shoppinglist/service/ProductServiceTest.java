@@ -25,19 +25,15 @@ public class ProductServiceTest {
     private ProductService victim;
     @Captor
     private ArgumentCaptor<Product> productCaptor;
-    @Captor
-    private ArgumentCaptor<ProductInMemoryRepository> repositoryCaptor;
 
     @Test
     public void shouldCreateProductSuccessfully(){
         Product product = product();
         when(repository.insert(product)).thenReturn(product);
         Long result = victim.createProduct(product);
-        verify(validationService).validate(productCaptor.capture(), repositoryCaptor.capture());
+        verify(validationService).validate(productCaptor.capture());
         Product productCaptorResult = productCaptor.getValue();
-        ProductInMemoryRepository repositoryCaptorResult = repositoryCaptor.getValue();
         assertEquals(product(), productCaptorResult);
-        assertEquals(repository, repositoryCaptorResult);
         assertEquals(product.getId(), result);
     }
 
