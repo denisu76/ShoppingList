@@ -3,10 +3,12 @@ package com.javaguru.shoppinglist.console;
 import com.javaguru.shoppinglist.service.Category;
 import com.javaguru.shoppinglist.service.ProductService;
 import com.javaguru.shoppinglist.domain.Product;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+@Component
 public class ConsoleUI {
 
     private final ProductService productService;
