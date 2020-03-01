@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductNameValidationRule implements ProductValidationRule{
 
-    private final int MIN_VALUE = 3;
-    private final int MAX_VALUE = 32;
+    private static final int MIN_VALUE = 3;
+    private static final int MAX_VALUE = 32;
 
     @Override
     public void validate (Product product){
