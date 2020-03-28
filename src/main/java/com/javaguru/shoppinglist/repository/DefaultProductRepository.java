@@ -18,8 +18,6 @@ import java.util.Map;
 @Component
 @Profile("local")
 public class DefaultProductRepository implements ProductRepository {
-    private Map<Long, Product> productRepository = new HashMap<>();
-    private Long productIdSequence = 0L;
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -38,7 +36,7 @@ public class DefaultProductRepository implements ProductRepository {
             PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, product.getName());
             ps.setBigDecimal(2, product.getPrice());
-            ps.setString(3,product.getCategory().toString());
+            ps.setInt(3, product.getCategory().ordinal());
             ps.setBigDecimal(4, product.getDiscount());
             ps.setString(5, product.getDescription());
             return ps;
