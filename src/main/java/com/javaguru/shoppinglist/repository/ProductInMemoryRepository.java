@@ -1,13 +1,15 @@
 package com.javaguru.shoppinglist.repository;
 
 import com.javaguru.shoppinglist.domain.Product;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class ProductInMemoryRepository {
+@Profile("inmemorydb")
+public class ProductInMemoryRepository implements ProductRepository{
     private Map<Long, Product> productRepository = new HashMap<>();
     private Long productIdSequence = 0L;
 
