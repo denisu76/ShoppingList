@@ -4,11 +4,17 @@ import com.javaguru.shoppinglist.service.Category;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
 public class Product {
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Set<ShoppingCartProduct> shoppingCartProducts = new HashSet<>();
 
     @Id
     @Column(name = "id")
@@ -106,5 +112,13 @@ public class Product {
                 ", discount=" + discount +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    public Set<ShoppingCartProduct> getShoppingCartProducts() {
+        return shoppingCartProducts;
+    }
+
+    public void setShoppingCartProducts(Set<ShoppingCartProduct> shoppingCartProducts) {
+        this.shoppingCartProducts = shoppingCartProducts;
     }
 }
